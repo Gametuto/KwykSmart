@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "KwykSmart",
+  "version": "1.0",
+  "description": "Copie automatiquement les questions et les calculs de kwyk.fr dans le presse-papier.",
+  "permissions": [
+    "activeTab",
+    "clipboardWrite",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.kwyk.fr/devoirs/*", "https://www.kwyk.fr/exercices/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
+}

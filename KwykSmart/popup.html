@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>KwykSmart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      max-width: 300px;
+    }
+    .status {
+      margin-top: 20px;
+    }
+    .toggle {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .toggle input {
+      display: none;
+    }
+    .toggle-label {
+      background-color: #ccc;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-block;
+      height: 25px;
+      margin-right: 10px;
+      position: relative;
+      width: 50px;
+    }
+    .toggle-label:before {
+      background-color: #fff;
+      border-radius: 50%;
+      content: '';
+      height: 21px;
+      left: 2px;
+      position: absolute;
+      top: 2px;
+      transition: 0.3s;
+      width: 21px;
+    }
+    .toggle input:checked + .toggle-label {
+      background-color: #4c7f43;
+    }
+    .toggle input:checked + .toggle-label:before {
+      transform: translateX(25px);
+    }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">KwykSmart</h1>
+      <p class="subtitle">Extension active</p>
+      <div id="status" class="notification is-info status">
+        Vérification du statut...
+      </div>
+      <div class="toggle">
+        <input type="checkbox" id="latex-toggle">
+        <label for="latex-toggle" class="toggle-label"></label>
+        <span>Copier en LaTeX</span>
+      </div>
+    </div>
+  </section>
+  <script src="popup.js"></script>
+</body>
+</html>
