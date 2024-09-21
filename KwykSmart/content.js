@@ -21,6 +21,38 @@ function createPopup() {
   });
 }
 
+// Fonction pour rendre les questions sélectionnables
+function makeQuestionsSelectable() {
+  const elements = document.querySelectorAll('.exercise_question');
+  elements.forEach(element => {
+    // Sauvegardez les styles d'origine
+    const originalStyles = {
+      userSelect: element.style.userSelect,
+      WebkitUserSelect: element.style.WebkitUserSelect,
+      MozUserSelect: element.style.MozUserSelect,
+      msUserSelect: element.style.msUserSelect
+    };
+
+    // Modifiez temporairement les styles pour permettre la sélection
+    element.style.userSelect = 'text';
+    element.style.WebkitUserSelect = 'text';
+    element.style.MozUserSelect = 'text';
+    element.style.msUserSelect = 'text';
+
+    // Fonction pour restaurer les styles d'origine
+    function restoreOriginalStyles() {
+      element.style.userSelect = originalStyles.userSelect;
+      element.style.WebkitUserSelect = originalStyles.WebkitUserSelect;
+      element.style.MozUserSelect = originalStyles.MozUserSelect;
+      element.style.msUserSelect = originalStyles.msUserSelect;
+    }
+
+    // Restaurer les styles d'origine lorsque la souris quitte l'élément
+    element.addEventListener('mouseleave', restoreOriginalStyles);
+  });
+  console.log('Questions rendues sélectionnables.');
+}
+
 // Fonction pour extraire tout le texte d'un élément, excluant les formules LaTeX
 function getTextFromElement(element) {
   let text = '';
@@ -89,7 +121,10 @@ console.log("Matches exercicesPattern:", window.location.href.match(exercicesPat
 
 if (window.location.href.match(devoirsPattern) || window.location.href.match(exercicesPattern)) {
   statusMessage = 'Le popup est affiché, en attente de l\'utilisateur.';
+  // Appeler la fonction pour rendre les questions sélectionnables
+  makeQuestionsSelectable();
   createPopup();
+  makeQuestionsSelectable();
 }
 
 // Pour répondre à la demande de statut
