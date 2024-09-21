@@ -80,8 +80,12 @@ function copyContent() {
 }
 
 // Vérifier les URLs pour afficher le popup
-const devoirsPattern = /https:\/\/www\.kwyk\.fr\/devoirs\/\d+/;
-const exercicesPattern = /https:\/\/www\.kwyk\.fr\/exercices\/.*/;
+const devoirsPattern = /^https:\/\/www\.kwyk\.fr\/devoirs\/\d+\/?.*$/;
+const exercicesPattern = /^https:\/\/www\.kwyk\.fr\/exercices\/(\d+|anciens_devoirs\/\d+)\/?.*$/;
+
+console.log("Current URL:", window.location.href);
+console.log("Matches devoirsPattern:", window.location.href.match(devoirsPattern));
+console.log("Matches exercicesPattern:", window.location.href.match(exercicesPattern));
 
 if (window.location.href.match(devoirsPattern) || window.location.href.match(exercicesPattern)) {
   statusMessage = 'Le popup est affiché, en attente de l\'utilisateur.';

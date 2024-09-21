@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "firefox",
+        "request": "launch",
+        "name": "Debug KwykSmart Extension",
+        "url": "https://www.kwyk.fr/devoirs/",
+        "webRoot": "${workspaceFolder}",
+        "pathMappings": [
+          {
+            "url": "webpack:///",
+            "path": "${workspaceFolder}/"
+          }
+        ],
+        "addonPath": "${workspaceFolder}/KwykSmart"
+      }
+    ]
+  }
