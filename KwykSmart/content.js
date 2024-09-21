@@ -23,7 +23,7 @@ function createPopup() {
 
 // Fonction pour rendre les questions sélectionnables
 function makeQuestionsSelectable() {
-  const elements = document.querySelectorAll('.exercise_question');
+  const elements = document.querySelectorAll('.question_container .core .exercise_question');
   elements.forEach(element => {
     // Sauvegardez les styles d'origine
     const originalStyles = {
@@ -125,6 +125,15 @@ if (window.location.href.match(devoirsPattern) || window.location.href.match(exe
   makeQuestionsSelectable();
   createPopup();
   makeQuestionsSelectable();
+
+  // Ajouter des gestionnaires d'événements pour le popup
+  document.getElementById('popup-confirm-button').addEventListener('click', () => {
+    makeQuestionsSelectable();
+  });
+
+  document.getElementById('popup-cancel-button').addEventListener('click', () => {
+    makeQuestionsSelectable();
+  });
 }
 
 // Pour répondre à la demande de statut
