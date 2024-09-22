@@ -76,8 +76,8 @@ function copyContent() {
       let parentElement = document.querySelector('.exercise_question');
 
       if (parentElement) {
-        // Obtenir tout le texte de la question, en excluant les éléments KaTeX
-        let text = getTextFromElement(parentElement).trim();
+        // Obtenir tout le texte de la question, en incluant les éléments MathJax en LaTeX
+        let text = getTextWithMathJax(parentElement).trim();
 
         let fullText = `Questions: ${text}\n`;
 
@@ -109,6 +109,27 @@ function copyContent() {
   } else {
     console.error('chrome.storage.local is undefined');
   }
+}
+
+// Fonction pour obtenir le texte avec les expressions MathJax en LaTeX
+function getTextWithMathJax(element) {
+  let text = '';
+  element.childNodes.forEach(child => {
+    if (child.nodeType === Node.TEXT_NODE) {
+      text += child.textContent;
+    } else if (child.nodeType === Node.ELEMENT_NODE) {
+      if (child.tagName.toLowerCase() === 'mjx-container') {
+        let annotation = child.querySelector('annotation[encoding="application/x-tex"]');
+        if (annotation) {
+          let latex = annotation.textContent;
+          text += `\\(${latex}\\)`;
+        }
+      } else {
+        text += getTextWithMathJax(child);
+      }
+    }
+  });
+  return text;
 }
 
 // Vérifier les URLs pour afficher le popup
