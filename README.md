@@ -2,6 +2,10 @@
 
 KwykSmart est une extension Chrome pour copier facilement les questions et les calculs de Kwyk.fr dans le presse-papier.
 
+## Statut
+
+Projet archivé : ce dépôt n’est plus maintenu (dernières mises à jour il y a ~2 ans). Il peut ne plus fonctionner si Kwyk.fr ou Chrome évoluent.
+
 ## Fonctionnalités
 
 - Copie automatiquement les questions et les calculs de Kwyk.fr.
@@ -44,7 +48,7 @@ KwykSmart est une extension Chrome pour copier facilement les questions et les c
 
 ## Contribuer
 
-Les contributions sont les bienvenues ! Veuillez ouvrir une issue ou soumettre une pull request pour toute amélioration ou correction.
+Dépôt archivé : pas de support ni de contributions attendues. Vous pouvez forker librement si besoin.
 
 ## Licence
 
